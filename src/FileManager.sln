@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.iOS", "FileMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.UI", "FileManager.UI\FileManager.UI.csproj", "{1BAD979B-CBC4-49BD-983F-BFBFAA284E82}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "FileManager.Android", "FileManager.Android\FileManager.Android.csproj", "{47BAA82A-1F4A-4D33-8F3B-1DD1A498346F}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "FileManager.Droid", "FileManager.Droid\FileManager.Droid.csproj", "{47BAA82A-1F4A-4D33-8F3B-1DD1A498346F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Core", "FileManager.Core\FileManager.Core.csproj", "{31B4B569-7B8F-4027-8EBF-A36D0F4095F9}"
 EndProject
