@@ -88,10 +88,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileManager\FileManager.csproj">
-      <Project>{1BAD979B-CBC4-49BD-983F-BFBFAA284E82}</Project>
-      <Name>FileManager</Name>
+    <ProjectReference Include="..\FileManager.UI\FileManager.UI.csproj">
+      <Project>{1bad979b-cbc4-49bd-983f-bfbfaa284e82}</Project>
+      <Name>FileManager.UI</Name>
     </ProjectReference>
   </ItemGroup>
- <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

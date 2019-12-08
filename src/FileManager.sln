@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Android", "File
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.iOS", "FileManager.iOS\FileManager.iOS.csproj", "{BA058108-1D52-43E2-9313-2D17A62319AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{1BAD979B-CBC4-49BD-983F-BFBFAA284E82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.UI", "FileManager.UI\FileManager.UI.csproj", "{1BAD979B-CBC4-49BD-983F-BFBFAA284E82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

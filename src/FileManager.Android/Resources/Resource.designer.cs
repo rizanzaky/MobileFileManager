@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("FileManager.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("FileManager.UI.Droid.Resource", IsApplication=true)]
 
 namespace FileManager.Droid
 {
