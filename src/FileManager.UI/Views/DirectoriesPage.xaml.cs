@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace FileManager.UI.Views
@@ -12,5 +13,7 @@ namespace FileManager.UI.Views
         {
             InitializeComponent();
         }
+
+        public List<string> Directories => new List<string>{"One", "Two", "Three", "Four", "Five"};
     }
 }
