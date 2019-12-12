@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using FileManager.UI.Views;
+using Xamarin.Forms;
 
 namespace FileManager.UI
 {
@@ -8,7 +9,7 @@ namespace FileManager.UI
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new DirectoryPage());
         }
 
         protected override void OnStart()
