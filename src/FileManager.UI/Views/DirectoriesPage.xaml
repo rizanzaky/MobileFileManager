@@ -19,10 +19,12 @@
             
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Margin="25,25,25,25" BackgroundColor="Red">
-                        <Label Text="Hello"></Label>
-                        <Label Text="Hello"></Label>
-                    </StackLayout>
+                    <ContentView Padding="10,10,10,10" BackgroundColor="Green">
+                        <StackLayout Padding="10,10,10,10" BackgroundColor="Red">
+                            <Label Text="Hello"></Label>
+                            <Label Text="Hello"></Label>
+                        </StackLayout>
+                    </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
