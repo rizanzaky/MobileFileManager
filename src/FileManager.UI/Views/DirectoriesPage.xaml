@@ -5,33 +5,24 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             x:Name="directoriesPage"
              x:Class="FileManager.UI.Views.DirectoryPage"
              Padding="15, 10, 15, 10"
-             Title="Directories">
+             Title="Directories"
+             BindingContext="{x:Reference Name=directoriesPage}">
 
     <AbsoluteLayout>
-        <CollectionView>
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Baboon</x:String>
-                    <x:String>Capuchin Monkey</x:String>
-                    <x:String>Blue Monkey</x:String>
-                    <x:String>Squirrel Monkey</x:String>
-                    <x:String>Golden Lion Tamarin</x:String>
-                    <x:String>Howler Monkey</x:String>
-                    <x:String>Japanese Macaque</x:String>
-                </x:Array>
-            </CollectionView.ItemsSource>
-
+        <CollectionView ItemsSource="{Binding Directories}">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="2" />
+                <GridItemsLayout Orientation="Vertical" Span="3" />
             </CollectionView.ItemsLayout>
             
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="Blue">
-                            
-                    </Grid>
+                    <StackLayout Margin="25,25,25,25" BackgroundColor="Red">
+                        <Label Text="Hello"></Label>
+                        <Label Text="Hello"></Label>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
