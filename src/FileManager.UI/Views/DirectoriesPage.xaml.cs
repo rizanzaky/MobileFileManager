@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
+using Plugin.FilePicker;
 using Xamarin.Forms;
 
 namespace FileManager.UI.Views
@@ -20,9 +22,8 @@ namespace FileManager.UI.Views
 
         private void Initialize()
         {
-            var documents = Environment.GetFolderPath(Environment.SpecialFolder.Resources);
+            var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var directoryname = Path.Combine(documents, "Acrobat");
-
             var directories = Directory.GetDirectories(documents);
 
             foreach (var document in directories)
@@ -33,5 +34,25 @@ namespace FileManager.UI.Views
 
         public string DirectoryStrings { get; set; }
         public List<string> Directories => new List<string>{"One", "Two", "Three", "Four", "Five"};
+
+        private async void OnPickerClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var fileData = await CrossFilePicker.Current.PickFile();
+                if (fileData == null)
+                    return; // user canceled file picking
+
+                var fileName = fileData.FileName;
+                var contents = Encoding.UTF8.GetString(fileData.DataArray);
+
+                Console.WriteLine("File name chosen: " + fileName);
+                Console.WriteLine("File data: " + contents);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception choosing file: " + ex);
+            }
+        }
     }
 }

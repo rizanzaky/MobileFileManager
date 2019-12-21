@@ -32,6 +32,7 @@
         <!-- </CollectionView> -->
 
         <Button CornerRadius="30"
+                Clicked="OnPickerClicked"
                 WidthRequest="60" HeightRequest="60"
                 AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,80,90"
                 HorizontalOptions="Center" VerticalOptions="Center"
