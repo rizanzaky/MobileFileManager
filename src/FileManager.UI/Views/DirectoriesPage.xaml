@@ -12,22 +12,24 @@
              BindingContext="{x:Reference Name=directoriesPage}">
 
     <AbsoluteLayout>
-        <CollectionView ItemsSource="{Binding Directories}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="3" />
-            </CollectionView.ItemsLayout>
-            
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <ContentView Padding="10,10,10,10" BackgroundColor="Green">
-                        <StackLayout Padding="10,10,10,10" BackgroundColor="Red">
-                            <Label Text="Hello"></Label>
-                            <Label Text="Hello"></Label>
-                        </StackLayout>
-                    </ContentView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <Label Text="{Binding Directories}"></Label>
+        
+        <!-- <CollectionView ItemsSource="{Binding Directories}"> -->
+        <!--     <CollectionView.ItemsLayout> -->
+        <!--         <GridItemsLayout Orientation="Vertical" Span="3" /> -->
+        <!--     </CollectionView.ItemsLayout> -->
+        <!--      -->
+        <!--     <CollectionView.ItemTemplate> -->
+        <!--         <DataTemplate> -->
+        <!--             <ContentView Padding="10,10,10,10" BackgroundColor="Green"> -->
+        <!--                 <StackLayout Padding="10,10,10,10" BackgroundColor="Red"> -->
+        <!--                     <Label Text="Hello"></Label> -->
+        <!--                     <Label Text="Hello"></Label> -->
+        <!--                 </StackLayout> -->
+        <!--             </ContentView> -->
+        <!--         </DataTemplate> -->
+        <!--     </CollectionView.ItemTemplate> -->
+        <!-- </CollectionView> -->
 
         <Button CornerRadius="30"
                 WidthRequest="60" HeightRequest="60"
