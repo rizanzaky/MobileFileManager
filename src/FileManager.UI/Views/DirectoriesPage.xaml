@@ -12,32 +12,65 @@
              BindingContext="{x:Reference Name=directoriesPage}">
 
     <AbsoluteLayout>
-        <Label Text="{Binding Directories}"></Label>
-        
-        <!-- <CollectionView ItemsSource="{Binding Directories}"> -->
-        <!--     <CollectionView.ItemsLayout> -->
-        <!--         <GridItemsLayout Orientation="Vertical" Span="3" /> -->
-        <!--     </CollectionView.ItemsLayout> -->
-        <!--      -->
-        <!--     <CollectionView.ItemTemplate> -->
-        <!--         <DataTemplate> -->
-        <!--             <ContentView Padding="10,10,10,10" BackgroundColor="Green"> -->
-        <!--                 <StackLayout Padding="10,10,10,10" BackgroundColor="Red"> -->
-        <!--                     <Label Text="Hello"></Label> -->
-        <!--                     <Label Text="Hello"></Label> -->
-        <!--                 </StackLayout> -->
-        <!--             </ContentView> -->
-        <!--         </DataTemplate> -->
-        <!--     </CollectionView.ItemTemplate> -->
-        <!-- </CollectionView> -->
+         <Entry x:Name="directoryNameStr"
+                AbsoluteLayout.LayoutFlags="WidthProportional"
+                AbsoluteLayout.LayoutBounds="0,0,1,40"
+                HorizontalOptions="FillAndExpand" />
 
-        <Button CornerRadius="30"
-                Clicked="OnPickerClicked"
-                WidthRequest="60" HeightRequest="60"
-                AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,80,90"
-                HorizontalOptions="Center" VerticalOptions="Center"
-                BackgroundColor="Green"
-                Text="➕" />
+        <CollectionView x:Name="directoriesList"
+                         AbsoluteLayout.LayoutFlags="SizeProportional"
+                         AbsoluteLayout.LayoutBounds="0,50,1,1"
+                         ItemSizingStrategy="MeasureFirstItem"
+                         ItemsSource="{Binding Directories}"> 
+             <CollectionView.ItemsLayout> 
+                 <GridItemsLayout Orientation="Vertical"
+                                  Span="3"
+                                  HorizontalItemSpacing="10"
+                                  VerticalItemSpacing="10" /> 
+             </CollectionView.ItemsLayout> 
+              
+             <CollectionView.ItemTemplate> 
+                 <DataTemplate> 
+                     <ContentView Padding="10,10,10,10"
+                                  BackgroundColor="Green"> 
+                         <StackLayout Padding="10,10,10,10"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Center"> 
+                             <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
+                            <Label Text="{Binding Name}" HorizontalTextAlignment="Center" />
+                        </StackLayout> 
+                     </ContentView> 
+                 </DataTemplate> 
+             </CollectionView.ItemTemplate> 
+         </CollectionView> 
+
+        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                     AbsoluteLayout.LayoutBounds="1,1,1,90"
+                     Spacing="20"
+                     Padding="15,0,15,0"
+                     Orientation="Horizontal"
+                     HorizontalOptions="EndAndExpand">
+            <Button CornerRadius="30"
+                    Clicked="OnPickerClicked"
+                    WidthRequest="60" HeightRequest="60"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    BackgroundColor="Green"
+                    Text="➕" />
+            
+            <Button CornerRadius="30"
+                    Clicked="OnFolderCreateClicked"
+                    WidthRequest="60" HeightRequest="60"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    BackgroundColor="DarkOrange"
+                    Text="➕" />
+            
+            <Button CornerRadius="30"
+                    Clicked="OnReloadClicked"
+                    WidthRequest="60" HeightRequest="60"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    BackgroundColor="DeepSkyBlue"
+                    Text="➕" />
+        </StackLayout>
     </AbsoluteLayout>
 
 </ContentPage>
