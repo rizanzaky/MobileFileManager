@@ -56,6 +56,13 @@
                      Orientation="Horizontal"
                      HorizontalOptions="EndAndExpand">
             <Button CornerRadius="30"
+                    Clicked="OnBackClicked"
+                    WidthRequest="60" HeightRequest="60"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    BackgroundColor="MediumPurple"
+                    Text="🔙" />
+            
+            <Button CornerRadius="30"
                     Clicked="OnPickerClicked"
                     WidthRequest="60" HeightRequest="60"
                     HorizontalOptions="Center" VerticalOptions="Center"

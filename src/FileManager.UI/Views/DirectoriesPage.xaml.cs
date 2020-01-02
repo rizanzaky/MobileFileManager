@@ -26,7 +26,6 @@ namespace FileManager.UI.Views
         {
             Directories.Clear();
 
-            //var root = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             DirectoryLocation = Path.Combine(DirectoryLocation, dir ?? string.Empty);
             var directories = Directory.GetDirectories(DirectoryLocation);
 
@@ -37,7 +36,7 @@ namespace FileManager.UI.Views
                 {
                     continue;
                 }
-                var directory = new DirectoryInformation { Name = doc, Type = 1, Location = Environment.GetFolderPath(Environment.SpecialFolder.Personal) };
+                var directory = new DirectoryInformation { Name = doc, Type = 1, Location = DirectoryLocation };
                 Directories.Add(directory);
             }
 
@@ -45,7 +44,9 @@ namespace FileManager.UI.Views
             directoriesList.ItemsSource = Directories;
         }
 
-        public string DirectoryLocation { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+        private static readonly string RootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+        public string DirectoryLocation { get; set; } = RootDirectory;
         public List<DirectoryInformation> Directories { get; } = new List<DirectoryInformation>();
 
         private void OnReloadClicked(object sender, EventArgs e)
@@ -109,6 +110,19 @@ namespace FileManager.UI.Views
             var item = (DirectoryInformation)(((TappedEventArgs)e).Parameter);
             
             Initialize(item.Name);
+        }
+
+        private void OnBackClicked(object sender, EventArgs e)
+        {
+            if (string.Equals(DirectoryLocation, RootDirectory))
+            {
+                return;
+            }
+            
+            var parent = Directory.GetParent(DirectoryLocation);
+            DirectoryLocation = parent.FullName;
+
+            Initialize();
         }
     }
 }
