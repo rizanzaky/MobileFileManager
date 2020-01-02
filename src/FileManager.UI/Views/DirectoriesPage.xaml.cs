@@ -62,8 +62,6 @@ namespace FileManager.UI.Views
             var created = Directory.CreateDirectory(newDirectory);
             directoryNameStr.Text = string.Empty;
 
-            
-
             Initialize();
         }
 
@@ -75,14 +73,26 @@ namespace FileManager.UI.Views
                 if (fileData == null)
                     return; // user canceled file picking
 
-                var fileName = fileData.FileName;
+                //File.WriteAllBytes(Path.Combine(DirectoryLocation, fileData.FileName), fileData.DataArray); // TODO: test with large files
 
-                //
-                //var x = fileData.FilePath;
-                //var path = x.Replace($"{fileData.FileName}", "");
-                //var newDirectory = Path.Combine(path, "Hello");
-                //var created = Directory.CreateDirectory(newDirectory);
-                //
+                var fileName = fileData.FileName;
+                
+                try
+                {
+                    var file = Path.Combine(DirectoryLocation, fileData.FileName);
+                    using (var stream = File.Create(file))
+                    {
+                        using (var input = fileData.GetStream())
+                        {
+                            input.CopyTo(stream);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"File data: {ex}");
+                }
+                // CrossFilePicker.Current.sa
 
                 var contents = Encoding.UTF8.GetString(fileData.DataArray);
 
@@ -93,13 +103,6 @@ namespace FileManager.UI.Views
             {
                 Console.WriteLine("Exception choosing file: " + ex);
             }
-        }
-
-        private void OnDirectorySelected(object sender, SelectionChangedEventArgs e)
-        {
-            var item = (DirectoryInformation)e.CurrentSelection[0];
-
-            Initialize(item.Name);
         }
 
         private void OnDirectorySelected_(object sender, EventArgs e)
