@@ -42,7 +42,7 @@
                                       VerticalOptions="Center"
                                       HorizontalOptions="Center"> 
                              <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
-                            <Label Text="{Binding Name}" HorizontalTextAlignment="Center" />
+                             <Label Text="{Binding Name}" HorizontalTextAlignment="Center" MaxLines="2" LineBreakMode="TailTruncation" />
                         </StackLayout>
                      </ContentView> 
                  </DataTemplate> 
