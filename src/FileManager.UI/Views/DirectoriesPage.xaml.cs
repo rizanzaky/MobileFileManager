@@ -26,8 +26,8 @@ namespace FileManager.UI.Views
         {
             Directories.Clear();
 
-            var root = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            DirectoryLocation = Path.Combine(root, dir ?? string.Empty);
+            //var root = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            DirectoryLocation = Path.Combine(DirectoryLocation, dir ?? string.Empty);
             var directories = Directory.GetDirectories(DirectoryLocation);
 
             foreach (var document in directories)
