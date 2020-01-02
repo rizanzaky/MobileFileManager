@@ -21,6 +21,7 @@
                          AbsoluteLayout.LayoutFlags="SizeProportional"
                          AbsoluteLayout.LayoutBounds="0,50,1,1"
                          ItemSizingStrategy="MeasureFirstItem"
+                         SelectionMode="Single"
                          ItemsSource="{Binding Directories}"> 
              <CollectionView.ItemsLayout> 
                  <GridItemsLayout Orientation="Vertical"
@@ -32,13 +33,17 @@
              <CollectionView.ItemTemplate> 
                  <DataTemplate> 
                      <ContentView Padding="10,10,10,10"
-                                  BackgroundColor="Green"> 
+                                  BackgroundColor="Green">
+                         <ContentView.GestureRecognizers>
+                             <TapGestureRecognizer Tapped="OnDirectorySelected_" CommandParameter="{Binding}" />
+                         </ContentView.GestureRecognizers>
+                         
                          <StackLayout Padding="10,10,10,10"
                                       VerticalOptions="Center"
                                       HorizontalOptions="Center"> 
                              <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
                             <Label Text="{Binding Name}" HorizontalTextAlignment="Center" />
-                        </StackLayout> 
+                        </StackLayout>
                      </ContentView> 
                  </DataTemplate> 
              </CollectionView.ItemTemplate> 
@@ -54,22 +59,22 @@
                     Clicked="OnPickerClicked"
                     WidthRequest="60" HeightRequest="60"
                     HorizontalOptions="Center" VerticalOptions="Center"
-                    BackgroundColor="Green"
-                    Text="➕" />
+                    BackgroundColor="DeepSkyBlue"
+                    Text="📎" />
             
             <Button CornerRadius="30"
                     Clicked="OnFolderCreateClicked"
                     WidthRequest="60" HeightRequest="60"
                     HorizontalOptions="Center" VerticalOptions="Center"
-                    BackgroundColor="DarkOrange"
+                    BackgroundColor="LimeGreen"
                     Text="➕" />
             
             <Button CornerRadius="30"
                     Clicked="OnReloadClicked"
                     WidthRequest="60" HeightRequest="60"
                     HorizontalOptions="Center" VerticalOptions="Center"
-                    BackgroundColor="DeepSkyBlue"
-                    Text="➕" />
+                    BackgroundColor="DarkOrange"
+                    Text="↻" />
         </StackLayout>
     </AbsoluteLayout>
 

@@ -22,11 +22,12 @@ namespace FileManager.UI.Views
             Initialize();
         }
 
-        private void Initialize()
+        private void Initialize(string dir = null)
         {
             Directories.Clear();
 
-            DirectoryLocation = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var root = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            DirectoryLocation = Path.Combine(root, dir ?? string.Empty);
             var directories = Directory.GetDirectories(DirectoryLocation);
 
             foreach (var document in directories)
@@ -60,8 +61,10 @@ namespace FileManager.UI.Views
             }
 
             var newDirectory = Path.Combine(DirectoryLocation, directoryNameStr.Text);
-            Directory.CreateDirectory(newDirectory);
+            var created = Directory.CreateDirectory(newDirectory);
             directoryNameStr.Text = string.Empty;
+
+            
 
             Initialize();
         }
@@ -75,6 +78,14 @@ namespace FileManager.UI.Views
                     return; // user canceled file picking
 
                 var fileName = fileData.FileName;
+
+                //
+                //var x = fileData.FilePath;
+                //var path = x.Replace($"{fileData.FileName}", "");
+                //var newDirectory = Path.Combine(path, "Hello");
+                //var created = Directory.CreateDirectory(newDirectory);
+                //
+
                 var contents = Encoding.UTF8.GetString(fileData.DataArray);
 
                 Console.WriteLine("File name chosen: " + fileName);
@@ -84,6 +95,20 @@ namespace FileManager.UI.Views
             {
                 Console.WriteLine("Exception choosing file: " + ex);
             }
+        }
+
+        private void OnDirectorySelected(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (DirectoryInformation)e.CurrentSelection[0];
+
+            Initialize(item.Name);
+        }
+
+        private void OnDirectorySelected_(object sender, EventArgs e)
+        {
+            var item = (DirectoryInformation)(((TappedEventArgs)e).Parameter);
+            
+            Initialize(item.Name);
         }
     }
 }
