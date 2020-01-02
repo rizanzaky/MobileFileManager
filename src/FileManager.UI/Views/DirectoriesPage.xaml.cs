@@ -27,16 +27,13 @@ namespace FileManager.UI.Views
             Directories.Clear();
 
             DirectoryLocation = Path.Combine(DirectoryLocation, dir ?? string.Empty);
-            var directories = Directory.GetDirectories(DirectoryLocation);
+            
+            var directoryInfo = new DirectoryInfo(DirectoryLocation);
+            var subDirectories = directoryInfo.GetDirectories().Where(w => w.Attributes == FileAttributes.Directory);
 
-            foreach (var document in directories)
+            foreach (var subDirectoryInfo in subDirectories)
             {
-                var doc = document.Split('/').LastOrDefault();
-                if (string.IsNullOrEmpty(doc))
-                {
-                    continue;
-                }
-                var directory = new DirectoryInformation { Name = doc, Type = 1, Location = DirectoryLocation };
+                var directory = new DirectoryInformation { Name = subDirectoryInfo.Name, Type = 1, Location = DirectoryLocation };
                 Directories.Add(directory);
             }
 
