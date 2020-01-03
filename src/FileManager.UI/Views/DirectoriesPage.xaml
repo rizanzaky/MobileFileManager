@@ -36,10 +36,9 @@
                         <TapGestureRecognizer Tapped="OnDirectorySelected_" CommandParameter="{Binding}" />
                     </ContentView.GestureRecognizers>
                          
-                    <StackLayout Padding="10,10,10,10"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center"> 
-                        <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
+                    <StackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                        <Image Source="{Binding FullName}"></Image>
                         <Label Text="{Binding Name}" HorizontalTextAlignment="Center" MaxLines="2" LineBreakMode="TailTruncation" />
                     </StackLayout>
                 </ContentView> 
