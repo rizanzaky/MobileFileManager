@@ -25,6 +25,7 @@ namespace FileManager.UI.Views
         private void Initialize(string dir = null)
         {
             Directories.Clear();
+            Files.Clear();
 
             DirectoryLocation = Path.Combine(DirectoryLocation, dir ?? string.Empty);
             
@@ -43,8 +44,9 @@ namespace FileManager.UI.Views
 
             foreach (var file in b)
             {
-                var directory = new DirectoryInformation { Name = file.Name, Type = 2, Location = DirectoryLocation, FullName = file.FullName };
-                Directories.Add(directory);
+                var image = new DirectoryInformation { Name = file.Name, Type = 2, Location = DirectoryLocation, FullName = file.FullName };
+                Directories.Add(image);
+                Files.Add(image);
             }
 
             directoriesList.ItemsSource = null;
@@ -55,6 +57,7 @@ namespace FileManager.UI.Views
 
         public string DirectoryLocation { get; set; } = RootDirectory;
         public List<DirectoryInformation> Directories { get; } = new List<DirectoryInformation>();
+        public List<DirectoryInformation> Files { get; } = new List<DirectoryInformation>();
 
         private void OnReloadClicked(object sender, EventArgs e)
         {
@@ -111,7 +114,7 @@ namespace FileManager.UI.Views
             }
         }
 
-        private void OnDirectorySelected_(object sender, EventArgs e)
+        private void OnDirectorySelected(object sender, EventArgs e)
         {
             var item = (DirectoryInformation)(((TappedEventArgs)e).Parameter);
             
@@ -129,6 +132,18 @@ namespace FileManager.UI.Views
             DirectoryLocation = parent.FullName;
 
             Initialize();
+        }
+
+        private void OnImageSelected(object sender, EventArgs e)
+        {
+            var image = (DirectoryInformation)(((TappedEventArgs)e).Parameter);
+
+            var imageViewer = new ImageViewerPage();
+            
+            imageViewer.DataSource.Clear();
+            imageViewer.DataSource.AddRange(Files);
+            
+            Navigation.PushAsync(imageViewer);
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FileManager.UI.Views.ImageViewerPage"
+             
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="imageViewerPage"
+             Padding="15, 10, 15, 10"
+             Title="Image Viewer"
+             BindingContext="{x:Reference Name=imageViewerPage}">
+    
+    <ContentPage.Content>
+        <CarouselView ItemsSource="{Binding DataSource}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center" />
+                        <Image Source="{Binding FullName}"
+                               Aspect="AspectFill"
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </ContentPage.Content>
+</ContentPage>
