@@ -1,5 +1,6 @@
 ﻿using FileManager.UI;
 using Foundation;
+using MediaManager;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -23,6 +24,8 @@ namespace FileManager.iOS
         {
             Forms.Init();
             LoadApplication(new App());
+
+            CrossMediaManager.Current.Init();
 
             return base.FinishedLaunching(app, options);
         }

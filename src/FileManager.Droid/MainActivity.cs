@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using FileManager.UI;
+using MediaManager;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Platform = Xamarin.Essentials.Platform;
@@ -22,6 +23,9 @@ namespace FileManager.Droid
 
             Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
+
+            CrossMediaManager.Current.Init(this);
+
             LoadApplication(new App());
         }
 

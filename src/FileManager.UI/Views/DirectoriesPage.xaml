@@ -5,6 +5,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:FileManager.UI.Common.TemplateSelectors;assembly=FileManager.UI"
+             
+             xmlns:mediaplayer="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             
              mc:Ignorable="d"
              x:Name="directoriesPage"
              x:Class="FileManager.UI.Views.DirectoryPage"
@@ -55,10 +58,19 @@
                 AbsoluteLayout.LayoutFlags="WidthProportional"
                 AbsoluteLayout.LayoutBounds="0,0,1,40"
                 HorizontalOptions="FillAndExpand" />
+         
+         <!-- <mediaplayer:VideoView x:Name="mediaPlayer"></mediaplayer:VideoView> -->
+         <!-- Source="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" -->
+         <mediaplayer:VideoView x:Name="mediaPlayer" 
+                                AbsoluteLayout.LayoutFlags="WidthProportional"
+                                AbsoluteLayout.LayoutBounds="0,50,1,140"
+                                BackgroundColor="Cyan"
+                                ShowControls="True"
+                                VideoAspect="AspectFit" />
 
         <CollectionView x:Name="directoriesList"
                          AbsoluteLayout.LayoutFlags="SizeProportional"
-                         AbsoluteLayout.LayoutBounds="0,50,1,1"
+                         AbsoluteLayout.LayoutBounds="0,200,1,1"
                          ItemSizingStrategy="MeasureFirstItem"
                          SelectionMode="Single"
                          ItemTemplate="{StaticResource fileDirectoryTemplateSelector}"
