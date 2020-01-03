@@ -4,12 +4,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:FileManager.UI.Common.TemplateSelectors;assembly=FileManager.UI"
              mc:Ignorable="d"
              x:Name="directoriesPage"
              x:Class="FileManager.UI.Views.DirectoryPage"
              Padding="15, 10, 15, 10"
              Title="Directories"
              BindingContext="{x:Reference Name=directoriesPage}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="directoryTemplate">
+                <ContentView Padding="10,10,10,10"
+                             BackgroundColor="Green">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnDirectorySelected_" CommandParameter="{Binding}" />
+                    </ContentView.GestureRecognizers>
+                         
+                    <StackLayout Padding="10,10,10,10"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"> 
+                        <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" MaxLines="2" LineBreakMode="TailTruncation" />
+                    </StackLayout>
+                </ContentView> 
+            </DataTemplate>
+            <DataTemplate x:Key="fileTemplate">
+                <ContentView Padding="10,10,10,10"
+                             BackgroundColor="Gold">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnDirectorySelected_" CommandParameter="{Binding}" />
+                    </ContentView.GestureRecognizers>
+                         
+                    <StackLayout Padding="10,10,10,10"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"> 
+                        <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" MaxLines="2" LineBreakMode="TailTruncation" />
+                    </StackLayout>
+                </ContentView> 
+            </DataTemplate>
+            <local:FileDirectorySelector 
+                x:Key="fileDirectoryTemplateSelector" 
+                DirectoryTemplate="{StaticResource directoryTemplate}" 
+                FileTemplate="{StaticResource fileTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <AbsoluteLayout>
          <Entry x:Name="directoryNameStr"
@@ -22,6 +62,7 @@
                          AbsoluteLayout.LayoutBounds="0,50,1,1"
                          ItemSizingStrategy="MeasureFirstItem"
                          SelectionMode="Single"
+                         ItemTemplate="{StaticResource fileDirectoryTemplateSelector}"
                          ItemsSource="{Binding Directories}"> 
              <CollectionView.ItemsLayout> 
                  <GridItemsLayout Orientation="Vertical"
@@ -30,23 +71,23 @@
                                   VerticalItemSpacing="10" /> 
              </CollectionView.ItemsLayout> 
               
-             <CollectionView.ItemTemplate> 
-                 <DataTemplate> 
-                     <ContentView Padding="10,10,10,10"
-                                  BackgroundColor="Green">
-                         <ContentView.GestureRecognizers>
-                             <TapGestureRecognizer Tapped="OnDirectorySelected_" CommandParameter="{Binding}" />
-                         </ContentView.GestureRecognizers>
-                         
-                         <StackLayout Padding="10,10,10,10"
-                                      VerticalOptions="Center"
-                                      HorizontalOptions="Center"> 
-                             <Label Text="{Binding Type}" HorizontalTextAlignment="Center" />
-                             <Label Text="{Binding Name}" HorizontalTextAlignment="Center" MaxLines="2" LineBreakMode="TailTruncation" />
-                        </StackLayout>
-                     </ContentView> 
-                 </DataTemplate> 
-             </CollectionView.ItemTemplate> 
+             <!-- <CollectionView.ItemTemplate>  -->
+             <!--     <DataTemplate>  -->
+             <!--         <ContentView Padding="10,10,10,10" -->
+             <!--                      BackgroundColor="Green"> -->
+             <!--             <ContentView.GestureRecognizers> -->
+             <!--                 <TapGestureRecognizer Tapped="OnDirectorySelected_" CommandParameter="{Binding}" /> -->
+             <!--             </ContentView.GestureRecognizers> -->
+             <!--              -->
+             <!--             <StackLayout Padding="10,10,10,10" -->
+             <!--                          VerticalOptions="Center" -->
+             <!--                          HorizontalOptions="Center">  -->
+             <!--                 <Label Text="{Binding Type}" HorizontalTextAlignment="Center" /> -->
+             <!--                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" MaxLines="2" LineBreakMode="TailTruncation" /> -->
+             <!--            </StackLayout> -->
+             <!--         </ContentView>  -->
+             <!--     </DataTemplate>  -->
+             <!-- </CollectionView.ItemTemplate>  -->
          </CollectionView> 
 
         <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"

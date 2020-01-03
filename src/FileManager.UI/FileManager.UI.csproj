@@ -14,4 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\FileManager.Core\FileManager.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Common\TemplateSelectors\" />
+  </ItemGroup>
 </Project>

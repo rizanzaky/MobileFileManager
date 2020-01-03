@@ -29,11 +29,21 @@ namespace FileManager.UI.Views
             DirectoryLocation = Path.Combine(DirectoryLocation, dir ?? string.Empty);
             
             var directoryInfo = new DirectoryInfo(DirectoryLocation);
-            var subDirectories = directoryInfo.GetDirectories().Where(w => w.Attributes == FileAttributes.Directory);
+
+            var a = directoryInfo.GetDirectories();
+            var b = directoryInfo.GetFiles();
+
+            var subDirectories = a.Where(w => w.Attributes == FileAttributes.Directory);
 
             foreach (var subDirectoryInfo in subDirectories)
             {
                 var directory = new DirectoryInformation { Name = subDirectoryInfo.Name, Type = 1, Location = DirectoryLocation };
+                Directories.Add(directory);
+            }
+
+            foreach (var file in b)
+            {
+                var directory = new DirectoryInformation { Name = file.Name, Type = 2, Location = DirectoryLocation, FullName = file.FullName };
                 Directories.Add(directory);
             }
 
@@ -92,12 +102,8 @@ namespace FileManager.UI.Views
                 {
                     Console.WriteLine($"File data: {ex}");
                 }
-                // CrossFilePicker.Current.sa
-
-                var contents = Encoding.UTF8.GetString(fileData.DataArray);
-
-                Console.WriteLine("File name chosen: " + fileName);
-                Console.WriteLine("File data: " + contents);
+                
+                Initialize();
             }
             catch (Exception ex)
             {
