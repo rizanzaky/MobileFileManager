@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="FileManager.UI.Views.ImageViewerPage"
+             xmlns:local="clr-namespace:FileManager.UI.Common.TemplateSelectors;assembly=FileManager.UI"
+             xmlns:mediaplayer="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
              
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,22 +13,49 @@
              Title="Image Viewer"
              BindingContext="{x:Reference Name=imageViewerPage}">
     
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="imageViewTemplate">
+                <StackLayout>
+                    <Label Text="{Binding Name}"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <Image Source="{Binding FullName}"
+                           Aspect="AspectFill"
+                           HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="videoViewTemplate">
+                <StackLayout>
+                    <Label Text="{Binding Name}"
+                           TextColor="Blue"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <mediaplayer:VideoView x:Name="mediaPlayer" 
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           BackgroundColor="Cyan"
+                                           HeightRequest="400"
+                                           Source="{Binding FullName}"
+                                           ShowControls="True"
+                                           VideoAspect="AspectFit" />
+                </StackLayout>
+            </DataTemplate>
+            
+            
+            <local:MediaViewSelector 
+                x:Key="mediaViewSelector" 
+                ImageViewTemplate="{StaticResource imageViewTemplate}" 
+                VideoViewTemplate="{StaticResource videoViewTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <CarouselView ItemsSource="{Binding DataSource}">
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Name}"
-                               FontAttributes="Bold"
-                               FontSize="Large"
-                               HorizontalOptions="Start"
-                               VerticalOptions="Center" />
-                        <Image Source="{Binding FullName}"
-                               Aspect="AspectFill"
-                               HorizontalOptions="CenterAndExpand" />
-                    </StackLayout>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+        <CarouselView ItemsSource="{Binding DataSource}" ItemTemplate="{StaticResource mediaViewSelector}" />
     </ContentPage.Content>
 </ContentPage>

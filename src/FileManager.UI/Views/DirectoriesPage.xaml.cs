@@ -151,24 +151,24 @@ namespace FileManager.UI.Views
         {
             var image = (DirectoryInformation)(((TappedEventArgs)e).Parameter);
 
-            if (image.Type == 3)
-            {
-                try
-                {
-                    // mediaPlayer.Source = null;
-                    // mediaPlayer.Source = image.FullName;
-
-                    // CrossMediaManager.Current.MediaPlayer.VideoView =
-                    // CrossMediaManager.Current.MediaPlayer.AutoAttachVideoView = false;
-                    
-                    await CrossMediaManager.Current.Play(image.FullName);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                }
-                return;
-            }
+            // if (image.Type == 3)
+            // {
+            //     try
+            //     {
+            //         // mediaPlayer.Source = null;
+            //         // mediaPlayer.Source = image.FullName;
+            //
+            //         // CrossMediaManager.Current.MediaPlayer.VideoView =
+            //         // CrossMediaManager.Current.MediaPlayer.AutoAttachVideoView = false;
+            //         
+            //         await CrossMediaManager.Current.Play(image.FullName);
+            //     }
+            //     catch (Exception exception)
+            //     {
+            //         Console.WriteLine(exception);
+            //     }
+            //     //return;
+            // }
 
             var imageViewer = new ImageViewerPage();
             
